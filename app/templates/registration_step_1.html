@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<section class="login-wrapper">
+    <div class="c-container">
+        <div class="login-logo">
+            <a href="#" class="header-logo">
+                <img src="{{ url_for('static', path='img/logo.svg') }}" alt="">
+            </a>
+        </div>
+        <div class="login-popup">
+            <div class="login-popup-wrap">
+                <div class="login-popup-title">Регистрация</div>
+                <form class="registration-phone-form">
+                    <input id="input-countries" class="login-input" type="tel" name="phone" placeholder="Телефон*" required>
+                    <input class="login-input" type="text" name="sms" placeholder="СМС код" required>
+                    <button class="login-btn" type="submit">Регистрация</button>
+                    <div class="login-link">Есть аккаунт? <a href="#">Войти</a></div>
+                </form>
+            </div>
+            <div class="registration-bottom">
+                <div class="registration-bottom-text">
+                    Нажимая на кнопку «Зарегистрироваться», я даю <a href="#">согласие на обработку своих персональных данных</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
