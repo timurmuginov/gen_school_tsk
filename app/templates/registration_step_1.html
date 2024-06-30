@@ -13,9 +13,9 @@
         <div class="login-popup">
             <div class="login-popup-wrap">
                 <div class="login-popup-title">Регистрация</div>
-                <form class="registration-phone-form">
-                    <input id="input-countries" class="login-input" type="tel" name="phone" placeholder="Телефон*" required>
-                    <input class="login-input" type="text" name="sms" placeholder="СМС код" required>
+                <form action="/register" method="post" class="registration-phone-form" id="registration-phone-form">
+                    <input id="input-countries" class="login-input" type="tel" name="phone" placeholder="Телефон *" required>
+                    <input id="intlTelInputHidden" type="hidden" name="phone_full">
                     <button class="login-btn" type="submit">Регистрация</button>
                     <div class="login-link">Есть аккаунт? <a href="#">Войти</a></div>
                 </form>

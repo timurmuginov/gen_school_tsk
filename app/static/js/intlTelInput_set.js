@@ -263,4 +263,23 @@ if (input) {
         }
     // end
     });
+
+    // Кастомная функция для получения полного номера
+    function getFullPhoneNumber() {
+        const countryCode = iti.getSelectedCountryData().dialCode; // Получаем код страны
+        const phoneNumber = input.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
+        return `+${countryCode}${phoneNumber}`; // Возвращаем полный номер с кодом страны
+    }
+
+    // Обработчик отправки формы
+    const form = document.querySelector("#registration-phone-form");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Предотвращение стандартной отправки формы
+        const fullPhoneNumber = getFullPhoneNumber(); // Получение полного номера
+        $("#intlTelInputHidden").val(fullPhoneNumber); // Установка значения в скрытое поле
+        console.log("Полный номер телефона:", fullPhoneNumber); // Логирование номера в консоль
+        this.submit(); // Отправка формы после обновления значения
+    });
+      
+
 }
