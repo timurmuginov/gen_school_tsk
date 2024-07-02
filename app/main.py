@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from dotenv import load_dotenv
 from fastapi.staticfiles import StaticFiles
 from app.users.routes_templates import router as router_users
+
+
 load_dotenv()
 
 app = FastAPI(

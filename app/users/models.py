@@ -1,7 +1,8 @@
-from sqlalchemy import String, func
+from sqlalchemy import Boolean, String
 from sqlalchemy.orm import mapped_column, Mapped, relationship
+from sqlalchemy.sql import expression
 
-from app.core.database import Base
+from app.database import Base
 
 
 class Roles(Base):
@@ -25,10 +26,10 @@ class Users(Base):
     name: Mapped[str] = mapped_column(nullable=True)
     hashed_password: Mapped[str] = mapped_column(nullable=True)
     is_active: Mapped[bool] = mapped_column(
-        default=True, server_default=func.true(), nullable=False
+        Boolean, nullable=False, server_default=expression.true()
     )
     is_completed_registration: Mapped[bool] = mapped_column(
-        default=False, server_default=func.true(), nullable=False
+        Boolean, nullable=False, server_default=expression.false()
     )
 
     role = relationship("Roles", back_populates="users")
