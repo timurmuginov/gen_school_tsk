@@ -265,9 +265,15 @@ if (input) {
     });
 
     // Кастомная функция для получения полного номера
+    // function getFullPhoneNumber() {
+    //     const countryCode = iti.getSelectedCountryData().dialCode; // Получаем код страны
+    //     const phoneNumber = input.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
+    //     return `+${countryCode}${phoneNumber}`; // Возвращаем полный номер с кодом страны
+    // }
+
     function getFullPhoneNumber() {
         const countryCode = iti.getSelectedCountryData().dialCode; // Получаем код страны
-        const phoneNumber = input.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
+        const phoneNumber = input.value; // Получаем введенный номер телефона полностью
         return `+${countryCode}${phoneNumber}`; // Возвращаем полный номер с кодом страны
     }
 
