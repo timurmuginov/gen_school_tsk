@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, String
+from sqlalchemy import Boolean, ForeignKey, String
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 from sqlalchemy.sql import expression
 
@@ -21,6 +21,7 @@ class Users(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+    role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"))
     phone: Mapped[str] = mapped_column(String(14), nullable=False, unique=True)
     email: Mapped[str] = mapped_column(nullable=True, unique=True)
     name: Mapped[str] = mapped_column(nullable=True)
@@ -32,7 +33,7 @@ class Users(Base):
         Boolean, nullable=False, server_default=expression.false()
     )
 
-    role = relationship("Roles", back_populates="users")
+    role: Mapped["Roles"] = relationship(back_populates="users")
 
     def __str__(self):
         return f"Пользователь {self.phone}"

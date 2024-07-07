@@ -3,7 +3,8 @@ def generate_verification_code(phone: str):
 
 
 def send_sms(phone: str, message: str):
-    pass
+    # Генериуем код и возвращаем его
+    return "1234567"
 
 
 def verify_code(phone: str, code: str):

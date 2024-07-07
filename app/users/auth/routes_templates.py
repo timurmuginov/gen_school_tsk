@@ -5,6 +5,8 @@ from pydantic import ValidationError
 
 from app.users.schemas import PhoneForm
 
+from app.celery_tasks.celery_tasks import send_sms_code_for_verification
+
 
 router = APIRouter(
   prefix="",
@@ -57,7 +59,10 @@ async def submit_phone(
         )
         # end: Валидация формы
 
-    # Отправляем смс и перенаправляем на странтцу верификации
+    # Отправляем смс и перенаправляем на страницу верификации
+    print("OK1")
+    send_sms_code_for_verification.delay("777", "333")
+    print("OK2")
 
     return templates.TemplateResponse(
         "registration_step_1.html", {
